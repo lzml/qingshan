@@ -1,0 +1,3 @@
+[submodule "3rdPart/libMta"]
+	path = 3rdPart/libMta
+	url = https://github.com/lzml/libMta.git
