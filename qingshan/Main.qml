@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
+import DlgMain
 
 Window {
     width: 640
@@ -15,21 +16,34 @@ Window {
            text: "青山不改，绿水长流"
            anchors.centerIn: parent
        }
+
+
+       Column{
+           x: 10
+           y: 10
+           spacing: 10
+
+           CheckBox {
+               id:ck_video
+               text: qsTr("隐藏视频")
+               checked: false
+           }
+           CheckBox {
+               id:ck_picture
+               text:qsTr("隐藏图片")
+               checked:false
+           }
+       }
     }
 
-    Column{
-        anchors.top: parent.top + 10
-        spacing: 10
 
-        CheckBox {
-            text: qsTr("隐藏视频")
-            checked: false
-        }
-        CheckBox {
-            text:qsTr("隐藏图片")
-            checked:false
-        }
+    Component.onCompleted: {
+       ck_picture.checked = wndHandler.isVisiblePicture();
     }
 
+
+    DLgMain{
+        id: wndHandler
+    }
 
 }
