@@ -10,7 +10,7 @@
 *.dll
 *.dylib
 .vs
-3rdPart/libMta
+3rdPart/*
 qingshan/out/
 
 
