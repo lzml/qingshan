@@ -1,5 +1,6 @@
 
 #include "dlgmain.h"
+#include "../win/regEdit.h"
 
 DlgMain::DlgMain(QObject *parent)
     : QObject{parent}
@@ -9,8 +10,8 @@ DlgMain::DlgMain(QObject *parent)
 
 bool DlgMain::isVisiblePicture()
 {
-
-
+    
+    //regEdit::getInstance()->RegKeyExist(HKEY_CURRENT_USER, );
 
     return true;
 }

@@ -4,16 +4,20 @@ project(qingshan VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+include_directories(AFTER ${CMAKE_CURRENT_SOURCE_DIR}/../3rdPart/libMta)
+
 find_package(Qt6 6.5 REQUIRED COMPONENTS Quick)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
 qt_add_executable(appqingshan
     "main.cpp"
-
+    "UIhandler/dlgmain.h"
     "UIhandler/dlgmain.cpp"
-
+    "win/shapi.h"
     "win/shapi.cpp"
+    "win/regEdit.h"
+    "win/regEdit.cpp"
 )
 
 qt_add_qml_module(appqingshan
@@ -28,6 +32,7 @@ set_target_properties(appqingshan PROPERTIES
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE
     WIN32_EXECUTABLE TRUE
+    IMPORTED_LOCATION  ${CMAKE_CURRENT_SOURCE_DIR}/../3rdPart/${CMAKE_BUILD_TYPE}
 )
 
 target_link_libraries(appqingshan
@@ -37,3 +42,6 @@ target_link_libraries(appqingshan
 install(TARGETS appqingshan
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
+
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../3rdPart/libMta/libMta  libMta)

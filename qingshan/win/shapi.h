@@ -1,4 +1,4 @@
-
+#pragma once
 #ifndef SHAPI_H
 #define SHAPI_H
 
