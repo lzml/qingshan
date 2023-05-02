@@ -4,6 +4,7 @@ import QtQuick.Controls
 import DlgMain
 
 Window {
+    id : wnd
     width: 640
     height: 480
     visible: true
@@ -27,18 +28,39 @@ Window {
                id:ck_video
                text: qsTr("隐藏视频")
                checked: false
+
+
            }
            CheckBox {
                id:ck_picture
                text:qsTr("隐藏图片")
-               checked:false
+               checked: wndHandler.checkPic;
+               Component.onCompleted:{
+                   if(wndHandler.checkPic === 2){
+                       ck_picture.enabled = false;
+                   }
+                   else {
+                       ck_picture.enabled = true;
+                       ck_picture.checked = wndHandler.checkPic;
+                   }
+               }
+
+               //这里值相等就好
+               onCheckStateChanged: function() {
+                   if(wndHandler.checkPic != checked)
+                   {
+                       wndHandler.checkPic = checked;
+                   }
+               }
            }
        }
     }
 
 
     Component.onCompleted: {
-       ck_picture.checked = wndHandler.isVisiblePicture();
+
+
+
     }
 
 

@@ -18,7 +18,11 @@ qt_add_executable(appqingshan
     "win/shapi.cpp"
     "win/regEdit.h"
     "win/regEdit.cpp"
+    "stringTable.h"
 )
+#请求管理员
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFESTUAC:\"level='requireAdministrator' uiAccess='false'\"")
+
 
 qt_add_qml_module(appqingshan
     URI qingshan
@@ -45,3 +49,5 @@ install(TARGETS appqingshan
 
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../3rdPart/libMta/libMta  libMta)
+
+
